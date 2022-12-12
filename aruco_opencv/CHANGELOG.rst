@@ -2,11 +2,12 @@
 Changelog for package aruco_opencv
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.0.0 (2022-12-12)
+4.0.0 (2022-12-12)
 ------------------
-* Better camera calibration handling (`#3 <https://github.com/fictionlab/aruco_opencv/issues/3>`_) (`#4 <https://github.com/fictionlab/aruco_opencv/issues/4>`_)
+* Better camera calibration handling (`#3 <https://github.com/fictionlab/ros_aruco_opencv/issues/3>`_)
   * Support different distortion models
   * Support rectified images
+* Use newer headers for cv_bridge
 * Use the custom QoS for image subscription
 * Fix autostart node activation
 * Use newer headers for tf2_geometry_msgs
