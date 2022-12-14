@@ -2,25 +2,23 @@
 Changelog for package aruco_opencv
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.0.1 (2022-12-14)
+1.0.1 (2022-12-14)
 ------------------
 
-2.0.0 (2022-12-12)
+1.0.0 (2022-12-12)
 ------------------
-* Better camera calibration handling (`#3 <https://github.com/fictionlab/aruco_opencv/issues/3>`_) (`#4 <https://github.com/fictionlab/aruco_opencv/issues/4>`_)
+* Better camera calibration handling (`#3 <https://github.com/fictionlab/aruco_opencv/issues/3>`_) (`#5 <https://github.com/fictionlab/aruco_opencv/issues/5>`_)
   * Support different distortion models
   * Support rectified images
 * Use the custom QoS for image subscription
 * Fix autostart node activation
-* Use newer headers for tf2_geometry_msgs
-* Fix aruco library linking
 * Fix build for Humble
 * Remove image_transport parameter
 * Add marker_dict parameter
 * Unsubscribe from image topic on shutdown
 * Add single_marker_tracker_autostart node
 * Reformat code with uncrustify
-* Use cv::parallel_for\_ in PnP pose computation
+* Use cv::parallel_for_ in PnP pose computation
 * Refactor parameter declaration and retrieval, add utils.hpp
 * Initial LifecycleNode implementation
 * Update project dependencies
