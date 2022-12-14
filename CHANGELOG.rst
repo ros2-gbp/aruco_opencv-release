@@ -2,6 +2,9 @@
 Changelog for package aruco_opencv
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.1 (2022-12-14)
+------------------
+
 2.0.0 (2022-12-12)
 ------------------
 * Better camera calibration handling (`#3 <https://github.com/fictionlab/aruco_opencv/issues/3>`_) (`#4 <https://github.com/fictionlab/aruco_opencv/issues/4>`_)
