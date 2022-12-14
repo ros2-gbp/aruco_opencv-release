@@ -2,6 +2,11 @@
 Changelog for package aruco_opencv_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.0.1 (2022-12-14)
+------------------
+* Fix package dependencies
+* Contributors: Błażej Sowa
+
 2.0.0 (2022-12-12)
 ------------------
 * Initial port for ROS2 Foxy
