@@ -20,13 +20,14 @@
 
 #pragma once
 
+#include <string>
 #include <unordered_map>
 
 #include <opencv2/aruco.hpp>
 #include <opencv2/calib3d.hpp>
 
 #include "geometry_msgs/msg/pose.hpp"
-#include "cv_bridge/cv_bridge.h"
+#include "cv_bridge/cv_bridge.hpp"
 
 namespace aruco_opencv
 {
@@ -35,4 +36,4 @@ geometry_msgs::msg::Pose convert_rvec_tvec(const cv::Vec3d & rvec, const cv::Vec
 
 extern const std::unordered_map<std::string, cv::aruco::PREDEFINED_DICTIONARY_NAME> ARUCO_DICT_MAP;
 
-} // namespace aruco_opencv
+}  // namespace aruco_opencv

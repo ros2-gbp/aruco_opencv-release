@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 #include "tf2/convert.h"
-#include "tf2_geometry_msgs/tf2_geometry_msgs.h"
+#include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 
 #include "aruco_opencv/utils.hpp"
 
@@ -73,4 +73,4 @@ const std::unordered_map<std::string, cv::aruco::PREDEFINED_DICTIONARY_NAME> ARU
   {"APRILTAG_36h11", PREDEFINED_DICTIONARY_NAME::DICT_APRILTAG_36h11},
 };
 
-} // namespace aruco_opencv
+}  // namespace aruco_opencv
