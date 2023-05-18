@@ -2,45 +2,43 @@
 Changelog for package aruco_opencv
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.1.1 (2023-05-18)
+1.1.1 (2023-05-18)
 ------------------
-* Fix create_marker and create_board script permissions (`#22 <https://github.com/fictionlab/aruco_opencv/issues/22>`_) (`#24 <https://github.com/fictionlab/aruco_opencv/issues/24>`_)
+* Fix create_marker and create_board script permissions (`#22 <https://github.com/fictionlab/aruco_opencv/issues/22>`_) (`#23 <https://github.com/fictionlab/aruco_opencv/issues/23>`_)
 * Contributors: Błażej Sowa
 
-2.1.0 (2023-02-22)
+1.1.0 (2023-02-22)
 ------------------
-* Add python dependencies (`#19 <https://github.com/fictionlab/aruco_opencv/issues/19>`_) (`#21 <https://github.com/fictionlab/aruco_opencv/issues/21>`_)
-* Add board detection (ROS2) (backport `#16 <https://github.com/fictionlab/aruco_opencv/issues/16>`_) (`#18 <https://github.com/fictionlab/aruco_opencv/issues/18>`_)
+* Add python dependencies (`#19 <https://github.com/fictionlab/aruco_opencv/issues/19>`_) (`#20 <https://github.com/fictionlab/aruco_opencv/issues/20>`_)
+* Add board detection (ROS2) (backport `#16 <https://github.com/fictionlab/aruco_opencv/issues/16>`_) (`#17 <https://github.com/fictionlab/aruco_opencv/issues/17>`_)
   * Rename SingleMarkerTracker to ArucoTracker
   * Add BoardPose msg, change MarkerDetection to ArucoDetection
   * Change default marker dictionary
   * Add board descriptions
   * Add board pose estimation
   * Fix cpplint errors
-* Add scripts for generating markers and boards (`#13 <https://github.com/fictionlab/aruco_opencv/issues/13>`_) (`#15 <https://github.com/fictionlab/aruco_opencv/issues/15>`_)
-* Ignore duplicate image frames (`#10 <https://github.com/fictionlab/aruco_opencv/issues/10>`_) (`#12 <https://github.com/fictionlab/aruco_opencv/issues/12>`_)
-* Add ament_lint tests to cmakelists instead of github workflows (backport `#7 <https://github.com/fictionlab/aruco_opencv/issues/7>`_) (`#8 <https://github.com/fictionlab/aruco_opencv/issues/8>`_)
+* Add scripts for generating markers and boards (`#13 <https://github.com/fictionlab/aruco_opencv/issues/13>`_) (`#14 <https://github.com/fictionlab/aruco_opencv/issues/14>`_)
+* Ignore duplicate image frames (`#10 <https://github.com/fictionlab/aruco_opencv/issues/10>`_) (`#11 <https://github.com/fictionlab/aruco_opencv/issues/11>`_)
+* Add ament_lint tests to cmakelists instead of github workflows (backport `#7 <https://github.com/fictionlab/aruco_opencv/issues/7>`_) (`#9 <https://github.com/fictionlab/aruco_opencv/issues/9>`_)
 * Contributors: Błażej Sowa
 
-2.0.1 (2022-12-14)
+1.0.1 (2022-12-14)
 ------------------
 
-2.0.0 (2022-12-12)
+1.0.0 (2022-12-12)
 ------------------
-* Better camera calibration handling (`#3 <https://github.com/fictionlab/aruco_opencv/issues/3>`_) (`#4 <https://github.com/fictionlab/aruco_opencv/issues/4>`_)
+* Better camera calibration handling (`#3 <https://github.com/fictionlab/aruco_opencv/issues/3>`_) (`#5 <https://github.com/fictionlab/aruco_opencv/issues/5>`_)
   * Support different distortion models
   * Support rectified images
 * Use the custom QoS for image subscription
 * Fix autostart node activation
-* Use newer headers for tf2_geometry_msgs
-* Fix aruco library linking
 * Fix build for Humble
 * Remove image_transport parameter
 * Add marker_dict parameter
 * Unsubscribe from image topic on shutdown
 * Add single_marker_tracker_autostart node
 * Reformat code with uncrustify
-* Use cv::parallel_for\_ in PnP pose computation
+* Use cv::parallel_for_ in PnP pose computation
 * Refactor parameter declaration and retrieval, add utils.hpp
 * Initial LifecycleNode implementation
 * Update project dependencies
