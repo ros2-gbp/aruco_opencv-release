@@ -1,16 +1,16 @@
-name: CI-Foxy
+name: CI-Rolling
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - foxy
+      - rolling
   pull_request:
     branches:
-      - foxy
+      - rolling
 
 env:
- ROS_DISTRO: foxy
+ ROS_DISTRO: rolling
 
 jobs:
   industrial_ci:
