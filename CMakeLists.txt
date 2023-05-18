@@ -59,7 +59,7 @@ install(
 )
 
 install(
-  PROGRAMS
+  FILES
     scripts/create_board
     scripts/create_marker
   DESTINATION lib/${PROJECT_NAME}
