@@ -2,6 +2,11 @@
 Changelog for package aruco_opencv
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.2.0 (2024-04-02)
+------------------
+* Add an option to subscribe to compressed image topics. (`#28 <https://github.com/fictionlab/aruco_opencv/issues/28>`_)
+* Contributors: Ray Ferric
+
 2.1.1 (2023-05-18)
 ------------------
 * Fix create_marker and create_board script permissions (`#22 <https://github.com/fictionlab/aruco_opencv/issues/22>`_) (`#24 <https://github.com/fictionlab/aruco_opencv/issues/24>`_)
