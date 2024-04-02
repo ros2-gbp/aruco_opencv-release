@@ -1,16 +1,16 @@
-name: CI-Humble
+name: CI-Iron
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - humble
+      - iron
   pull_request:
     branches:
-      - humble
+      - iron
 
 env:
- ROS_DISTRO: humble
+ ROS_DISTRO: iron
 
 jobs:
   industrial_ci:
@@ -25,4 +25,3 @@ jobs:
         uses: actions/checkout@v3
       - name: Source tests
         uses: "ros-industrial/industrial_ci@master"
-
