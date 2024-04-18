@@ -1,1 +1,1 @@
-{"base": "ba6243d", "parent": "debian/rolling/aruco_opencv", "previous": "8fc1bf2", "trim": "", "trimbase": ""}
+{"base": "df2d076", "parent": "debian/jazzy/aruco_opencv", "previous": "c6c166b", "trim": "", "trimbase": ""}
