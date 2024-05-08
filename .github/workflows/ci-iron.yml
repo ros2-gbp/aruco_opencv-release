@@ -1,22 +1,21 @@
-name: CI-Rolling
+name: CI-Iron
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - ros2
+      - iron
   pull_request:
     branches:
-      - ros2
+      - iron
 
 env:
- ROS_DISTRO: rolling
+ ROS_DISTRO: iron
 
 jobs:
   industrial_ci:
     runs-on: ubuntu-20.04
     strategy:
-      fail-fast: false
       matrix:
         ROS_REPO: [testing, main]
     env:
