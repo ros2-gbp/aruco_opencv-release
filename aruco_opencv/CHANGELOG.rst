@@ -2,6 +2,19 @@
 Changelog for package aruco_opencv
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+5.2.0 (2024-05-08)
+------------------
+* Use post-set parameters callback (`#41 <https://github.com/fictionlab/ros_aruco_opencv/issues/41>`_) (`#42 <https://github.com/fictionlab/ros_aruco_opencv/issues/42>`_)
+* Add missing detection parameters (backport `#38 <https://github.com/fictionlab/ros_aruco_opencv/issues/38>`_) (`#40 <https://github.com/fictionlab/ros_aruco_opencv/issues/40>`_)
+  * Populate default aruco parameter values from OpenCV library
+  * Add detectInvertedMarker parameter
+  * Add descriptions to aruco parameters in yaml file
+  * Add option to generate inverted markers
+  * Add Aruco3 detection parameters
+* Remove boards on node cleanup (`#35 <https://github.com/fictionlab/ros_aruco_opencv/issues/35>`_) (`#37 <https://github.com/fictionlab/ros_aruco_opencv/issues/37>`_)
+* Fix compatibility with OpenCV ^4.7.0 (backport `#32 <https://github.com/fictionlab/ros_aruco_opencv/issues/32>`_) (`#34 <https://github.com/fictionlab/ros_aruco_opencv/issues/34>`_)
+* Contributors: Błażej Sowa
+
 5.1.0 (2024-04-02)
 ------------------
 * Add an option to subscribe to compressed image topics. (`#28 <https://github.com/fictionlab/ros_aruco_opencv/issues/28>`_) (`#29 <https://github.com/fictionlab/ros_aruco_opencv/issues/29>`_)
