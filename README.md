@@ -1,3 +1,28 @@
+## aruco_opencv (humble) - 2.3.1-1
+
+The packages in the `aruco_opencv` repository were released into the `humble` distro by running `/bin/bloom-release --rosdistro humble aruco_opencv` on `Tue, 04 Jun 2024 16:54:54 -0000`
+
+These packages were released:
+- `aruco_opencv`
+- `aruco_opencv_msgs`
+
+Version of package(s) in repository `aruco_opencv`:
+
+- upstream repository: https://github.com/fictionlab/ros_aruco_opencv.git
+- release repository: https://github.com/ros2-gbp/aruco_opencv-release.git
+- rosdistro version: `2.3.0-1`
+- old version: `2.3.0-1`
+- new version: `2.3.1-1`
+
+Versions of tools used:
+
+- bloom version: `0.12.0`
+- catkin_pkg version: `1.0.0`
+- rosdep version: `0.24.0`
+- rosdistro version: `0.9.1`
+- vcstools version: `0.1.42`
+
+
 ## aruco_opencv (iron) - 5.2.1-1
 
 The packages in the `aruco_opencv` repository were released into the `iron` distro by running `/bin/bloom-release --rosdistro iron aruco_opencv` on `Tue, 04 Jun 2024 16:52:28 -0000`
