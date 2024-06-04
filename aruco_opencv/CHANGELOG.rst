@@ -2,34 +2,32 @@
 Changelog for package aruco_opencv
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-6.0.1 (2024-06-04)
+5.2.1 (2024-06-04)
 ------------------
-* Fix out of bounds indexes when retrieving camera matrix for rectified images (`#47 <https://github.com/fictionlab/ros_aruco_opencv/issues/47>`_)
+* Fix out of bounds indexes when retrieving camera matrix for rectified images (`#47 <https://github.com/fictionlab/ros_aruco_opencv/issues/47>`_) (`#48 <https://github.com/fictionlab/ros_aruco_opencv/issues/48>`_)
   * Add image_is_rectified parameter to example yaml config
 * Contributors: Błażej Sowa, Sandip Das
 
-6.0.0 (2024-05-08)
+5.2.0 (2024-05-08)
 ------------------
-* Use post-set parameters callback (`#41 <https://github.com/fictionlab/ros_aruco_opencv/issues/41>`_)
-* Add missing detection parameters (`#38 <https://github.com/fictionlab/ros_aruco_opencv/issues/38>`_)
+* Use post-set parameters callback (`#41 <https://github.com/fictionlab/ros_aruco_opencv/issues/41>`_) (`#42 <https://github.com/fictionlab/ros_aruco_opencv/issues/42>`_)
+* Add missing detection parameters (backport `#38 <https://github.com/fictionlab/ros_aruco_opencv/issues/38>`_) (`#40 <https://github.com/fictionlab/ros_aruco_opencv/issues/40>`_)
   * Populate default aruco parameter values from OpenCV library
   * Add detectInvertedMarker parameter
   * Add descriptions to aruco parameters in yaml file
   * Add option to generate inverted markers
   * Add Aruco3 detection parameters
-* Remove boards on node cleanup (`#35 <https://github.com/fictionlab/ros_aruco_opencv/issues/35>`_)
-* Fix compatibility with OpenCV ^4.7.0 (`#32 <https://github.com/fictionlab/ros_aruco_opencv/issues/32>`_)
+* Remove boards on node cleanup (`#35 <https://github.com/fictionlab/ros_aruco_opencv/issues/35>`_) (`#37 <https://github.com/fictionlab/ros_aruco_opencv/issues/37>`_)
+* Fix compatibility with OpenCV ^4.7.0 (backport `#32 <https://github.com/fictionlab/ros_aruco_opencv/issues/32>`_) (`#34 <https://github.com/fictionlab/ros_aruco_opencv/issues/34>`_)
 * Contributors: Błażej Sowa
 
-4.2.0 (2024-04-05)
+5.1.0 (2024-04-02)
 ------------------
-* Add an option to subscribe to compressed image topics. (`#28 <https://github.com/fictionlab/ros_aruco_opencv/issues/28>`_) (`#30 <https://github.com/fictionlab/ros_aruco_opencv/issues/30>`_)
+* Add an option to subscribe to compressed image topics. (`#28 <https://github.com/fictionlab/ros_aruco_opencv/issues/28>`_) (`#29 <https://github.com/fictionlab/ros_aruco_opencv/issues/29>`_)
 * Contributors: Ray Ferric
 
-4.1.1 (2023-05-18)
+5.0.0 (2023-05-18)
 ------------------
-* Fix create_marker and create_board script permissions (`#22 <https://github.com/fictionlab/ros_aruco_opencv/issues/22>`_)
-* Contributors: Błażej Sowa
 
 4.1.0 (2023-02-22)
 ------------------
