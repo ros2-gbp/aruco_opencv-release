@@ -1,1 +1,1 @@
-{"base": "3ad13c4", "parent": "debian/rolling/aruco_opencv_msgs", "previous": "7863096", "trim": "", "trimbase": ""}
+{"base": "98b2eaabcb6c", "parent": "debian/kilted/aruco_opencv_msgs", "previous": "feabd82b6898", "trim": "", "trimbase": ""}
