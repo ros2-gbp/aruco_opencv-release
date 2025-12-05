@@ -1,4 +1,4 @@
-// Copyright 2022 Kell Ideas sp. z o.o.
+// Copyright 2022-2025 Fictionlab sp. z o.o.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,7 @@
 #include "tf2/convert.h"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 
+#include "aruco_opencv/parameters.hpp"
 #include "aruco_opencv/utils.hpp"
 
 namespace aruco_opencv
@@ -70,5 +71,25 @@ const std::unordered_map<std::string, ArucoDictType> ARUCO_DICT_MAP = {
   {"APRILTAG_36h10", ArucoDictType::DICT_APRILTAG_36h10},
   {"APRILTAG_36h11", ArucoDictType::DICT_APRILTAG_36h11},
 };
+
+PoseSelectorStrategy parse_selector_strategy(const std::string & name)
+{
+  if (name == "PLANE_NORMAL_PARALLEL") {
+    return PoseSelectorStrategy::PLANE_NORMAL_PARALLEL;
+  }
+  return PoseSelectorStrategy::REPROJECTION_ERROR;
+}
+
+std::string pose_selector_strategy_to_string(PoseSelectorStrategy strategy)
+{
+  switch (strategy) {
+    case PoseSelectorStrategy::REPROJECTION_ERROR:
+      return "REPROJECTION_ERROR";
+    case PoseSelectorStrategy::PLANE_NORMAL_PARALLEL:
+      return "PLANE_NORMAL_PARALLEL";
+    default:
+      return "UNKNOWN";
+  }
+}
 
 }  // namespace aruco_opencv
