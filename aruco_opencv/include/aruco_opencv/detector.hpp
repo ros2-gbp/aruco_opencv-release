@@ -39,7 +39,8 @@
 namespace aruco_opencv
 {
 
-class ArucoDetector {
+class ArucoDetector
+{
 public:
   ArucoDetector() = delete;
   explicit ArucoDetector(rclcpp::Logger logger);
