@@ -28,8 +28,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_lifecycle/lifecycle_node.hpp"
-
-#include "cv_bridge/cv_bridge.h"
+#include "cv_bridge/cv_bridge.hpp"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 #include "tf2_ros/buffer.h"
 #include "tf2_ros/transform_listener.h"
@@ -37,7 +36,6 @@
 #include "rcl_interfaces/msg/set_parameters_result.hpp"
 #include "sensor_msgs/msg/camera_info.hpp"
 #include "sensor_msgs/msg/image.hpp"
-#include "sensor_msgs/image_encodings.hpp"
 #include "image_transport/camera_common.hpp"
 
 #include "aruco_opencv_msgs/msg/aruco_detection.hpp"
@@ -63,6 +61,7 @@ class ArucoTracker : public rclcpp_lifecycle::LifecycleNode
 
   // ROS
   OnSetParametersCallbackHandle::SharedPtr on_set_parameter_callback_handle_;
+  PostSetParametersCallbackHandle::SharedPtr post_set_parameter_callback_handle_;
   rclcpp_lifecycle::LifecyclePublisher<aruco_opencv_msgs::msg::ArucoDetection>::SharedPtr
     detection_pub_;
   rclcpp_lifecycle::LifecyclePublisher<sensor_msgs::msg::Image>::SharedPtr debug_pub_;
@@ -141,11 +140,10 @@ public:
     detection_pub_->on_activate();
     debug_pub_->on_activate();
 
-    on_set_parameter_callback_handle_ =
-      add_on_set_parameters_callback(
-      std::bind(
-        &ArucoTracker::callback_on_set_parameters,
-        this, std::placeholders::_1));
+    on_set_parameter_callback_handle_ = add_on_set_parameters_callback(
+      std::bind(&ArucoTracker::callback_on_set_parameters, this, std::placeholders::_1));
+    post_set_parameter_callback_handle_ = add_post_set_parameters_callback(
+      std::bind(&ArucoTracker::callback_post_set_parameters, this, std::placeholders::_1));
 
     RCLCPP_INFO(get_logger(), "Waiting for first camera info...");
 
@@ -185,6 +183,7 @@ public:
     RCLCPP_INFO(get_logger(), "Deactivating");
 
     on_set_parameter_callback_handle_.reset();
+    post_set_parameter_callback_handle_.reset();
     cam_info_sub_.reset();
     img_sub_.reset();
     compressed_img_sub_.reset();
@@ -216,6 +215,7 @@ public:
     RCLCPP_INFO(get_logger(), "Shutting down");
 
     on_set_parameter_callback_handle_.reset();
+    post_set_parameter_callback_handle_.reset();
     cam_info_sub_.reset();
     img_sub_.reset();
     compressed_img_sub_.reset();
@@ -253,13 +253,11 @@ protected:
         params_.output_frame.c_str());
       transform_poses_ = true;
     }
-    RCLCPP_INFO_STREAM(
-      get_logger(),
-      "TF publishing is " << (params_.publish_tf ? "enabled" : "disabled"));
+    RCLCPP_INFO_STREAM(get_logger(),
+        "TF publishing is " << (params_.publish_tf ? "enabled" : "disabled"));
     RCLCPP_INFO_STREAM(get_logger(), "Marker size: " << detector_params_.marker_size << " meters");
-    RCLCPP_INFO_STREAM(
-      get_logger(),
-      "Pose selector strategy: " <<
+    RCLCPP_INFO_STREAM(get_logger(),
+        "Pose selector strategy: " <<
         pose_selector_strategy_to_string(detector_params_.pose_selector.strategy));
     RCLCPP_INFO(get_logger(), "Aruco Parameters:");
 
@@ -272,14 +270,16 @@ protected:
     auto result = validate_core_parameters(parameters);
     if (!result.successful) {
       RCLCPP_ERROR_STREAM(get_logger(), result.reason);
-      return result;
     }
     result = validate_detector_parameters(parameters);
     if (!result.successful) {
       RCLCPP_ERROR_STREAM(get_logger(), result.reason);
     }
     return result;
+  }
 
+  void callback_post_set_parameters(const std::vector<rclcpp::Parameter> & parameters)
+  {
     update_dynamic_parameters(*this, parameters, detector_params_, aruco_parameters_);
 
     detector_->set_detector_parameters(detector_params_);
@@ -288,13 +288,11 @@ protected:
 
   void load_boards()
   {
-    RCLCPP_INFO_STREAM(
-      get_logger(),
-      "Trying to load board descriptions from " << params_.board_descriptions_path);
+    RCLCPP_INFO_STREAM(get_logger(),
+        "Trying to load board descriptions from " << params_.board_descriptions_path);
     std::string err;
     std::vector<std::pair<std::string, cv::Ptr<cv::aruco::Board>>> loaded;
-    if (!BoardLoader::load_from_file(
-        params_.board_descriptions_path, detector_->get_dictionary(),
+    if (!BoardLoader::load_from_file(params_.board_descriptions_path, detector_->get_dictionary(),
         loaded, err))
     {
       RCLCPP_ERROR_STREAM(get_logger(), err);
@@ -302,9 +300,8 @@ protected:
     }
     boards_ = std::move(loaded);
     for (const auto & b : boards_) {
-      RCLCPP_INFO_STREAM(
-        get_logger(),
-        "Successfully loaded configuration for board '" << b.first << "'");
+      RCLCPP_INFO_STREAM(get_logger(),
+          "Successfully loaded configuration for board '" << b.first << "'");
     }
   }
 
@@ -334,12 +331,7 @@ protected:
       return;
     }
 
-    cv_bridge::CvImageConstPtr cv_ptr;
-    if (sensor_msgs::image_encodings::hasAlpha(img_msg->encoding)) {
-      cv_ptr = cv_bridge::toCvCopy(img_msg, "bgr8");
-    } else {
-      cv_ptr = cv_bridge::toCvShare(img_msg);
-    }
+    auto cv_ptr = cv_bridge::toCvShare(img_msg);
     process_image(cv_ptr);
   }
 
@@ -381,13 +373,11 @@ protected:
     detection.header.frame_id = cv_ptr->header.frame_id;
     detection.header.stamp = cv_ptr->header.stamp;
 
-    detector_->estimate_marker_poses(
-      marker_ids, marker_corners, detection.markers, rvec_final,
-      tvec_final);
+    detector_->estimate_marker_poses(marker_ids, marker_corners, detection.markers, rvec_final,
+        tvec_final);
 
-    detector_->estimate_board_poses(
-      marker_ids, marker_corners, detection.boards, rvec_final,
-      tvec_final);
+    detector_->estimate_board_poses(marker_ids, marker_corners, detection.boards, rvec_final,
+        tvec_final);
 
     if (transform_poses_ && (detection.markers.size() > 0 || detection.boards.size() > 0)) {
       detection.header.frame_id = params_.output_frame;
